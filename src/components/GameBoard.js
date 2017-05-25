@@ -5,8 +5,9 @@ import SnakeGame from '../SnakeGame';
 class GameBoard extends Component {
   constructor(props) {
     super(props);
-    this.snakeGame = new SnakeGame();
     this.handleAction = this.handleAction.bind(this);
+    this.gameUpdate = this.gameUpdate.bind(this)
+    this.snakeGame = new SnakeGame(this.gameUpdate);
     this.state = { ...this.snakeGame.gameInfo };
   }
 
@@ -20,7 +21,10 @@ class GameBoard extends Component {
 
   handleAction(e) {
     this.snakeGame.action(e.keyCode);
-    this.setState({ ...this.snakeGame.gameInfo })
+  }
+
+  gameUpdate() {
+    this.setState({ ...this.snakeGame.gameInfo });
   }
 
   render() {
@@ -30,10 +34,11 @@ class GameBoard extends Component {
           {this.state.snake && this.state.snake.map(part => {
             const style = {
               position: 'absolute',
-              left: 20 * part.x,
-              top: 20 * part.y
+              left: 10 * part.x,
+              top: 10 * part.y,
+              width: '10px',
+              height: '10px',
             };
-            console.log(part)
             return <div className="snake" style={style}/>;
           })}
         </div>

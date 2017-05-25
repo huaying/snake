@@ -8,13 +8,18 @@ const Key = {
 
 class Snake {
   constructor() {
+    this.direction = Key.RIGHT;
     this.body = [{x: 0, y: 0}]
   }
 
-  move(direction) {
+  changeDirection(direction) {
+    this.direction = direction
+  }
+
+  move() {
     const currentPos = this.body[0];
     let newPos;
-    switch (direction) {
+    switch (this.direction) {
       case Key.UP:
         newPos = { x: currentPos.x, y: currentPos.y - 1 }
         break;
@@ -28,7 +33,7 @@ class Snake {
         newPos = { x: currentPos.x + 1, y: currentPos.y }
         break;
       default:
-        break;
+        return;
     }
     this.body.pop();
     this.body = [newPos, ...this.body];
@@ -42,12 +47,16 @@ const GameStatus = {
 }
 
 class SnakeGame {
-  constructor() {
+  constructor(gameCallback) {
+    this.timer = null;
+    this.timerPeriod = 200;
     this.gameStatus = GameStatus.INIT;
     this.gameInfo = {
       status: this.gameStatus,
       snake: null
     }
+    this.gameCallback = gameCallback;
+    this.running = this.running.bind(this);
   }
 
   action(key) {
@@ -55,13 +64,18 @@ class SnakeGame {
       case GameStatus.INIT:
         this.gameStatus = GameStatus.PLAYING;
         this.snake = new Snake();
+        this.timer = setInterval(this.running, this.timerPeriod);
         break;
       case GameStatus.PLAYING:
-        this.snake.move(key);
+        this.snake.changeDirection(key);
       default:
         break;
     }
-    this.updateGameInfo()
+  }
+
+  running() {
+    this.snake.move();
+    this.updateGameInfo();
   }
 
   updateGameInfo() {
@@ -70,6 +84,7 @@ class SnakeGame {
       status: this.gameStatus,
       snake: snake
     }
+    this.gameCallback();
   }
 }
 
