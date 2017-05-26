@@ -12,11 +12,12 @@ class GameBoard extends Component {
   }
 
   componentDidMount() {
-    document.addEventListener('keyup', this.handleAction);
+    document.addEventListener('keydown', this.handleAction);
   }
 
+
   componentWillUnmount() {
-    document.removeEventListener('keyup', this.handleAction);
+    document.removeEventListener('keydown', this.handleAction);
   }
 
   handleAction(e) {
@@ -28,6 +29,21 @@ class GameBoard extends Component {
   }
 
   render() {
+    const food = () => {
+      if (this.state.food) {
+        const { x, y } = this.state.food;
+        const style = {
+          position: 'absolute',
+          background: 'red',
+          left: 10 * x,
+          top: 10 * y,
+          width: '10px',
+          height: '10px',
+        };
+        return <div className="food" style={style}/>;
+      }
+      return null;
+    }
     return (
       <div className="game-board">
         <div className="snakeWrapper">
@@ -42,6 +58,7 @@ class GameBoard extends Component {
             return <div className="snake" style={style}/>;
           })}
         </div>
+        {food()}
       </div>
     );
   }
