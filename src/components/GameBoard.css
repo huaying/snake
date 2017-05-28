@@ -1,7 +1,24 @@
+.nav {
+  padding: 20px 15px;
+  background: #ECECEC;
+}
+
+.nav > .brand {
+  font-size: 24px;
+  font-weight: bold;
+}
+
 .game-board {
-  background: black;
+  background: #446CB3;
+  border-radius: 5px;
 }
 
 .snake {
   background: gray;
+}
+
+.result > span {
+  margin-right: 20px;
+  font-size: 20px;
+  font-weight: bold;
 }

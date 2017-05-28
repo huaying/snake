@@ -1,25 +1,35 @@
 import React, { Component } from 'react';
 import './GameBoard.css';
-import SnakeGame from '../SnakeGame';
+import SnakeGame from '../game/SnakeGame';
 
 const GridUnit = 10;
 
-const Board = ({game, children}) => {
+const Nav = () => (
+  <div className="nav">
+    <span className="brand">Snake Game</span>
+  </div>
+);
+
+const Board = ({ game, children }) => {
   const { columns, rows } = game.board;
   const style = {
+    position: 'relative',
     width: columns * GridUnit,
-    height: rows * GridUnit
-  }
+    height: rows * GridUnit,
+  };
   return (
-    <div className="game-board" style={style}>
-      {children}
+    <div className="game-board-wrapper">
+      <div className="game-board" style={style}>
+        {children}
+      </div>
     </div>
-  )
+  );
 };
 
-const Snake = ({snake}) => (
-  <div className="snakeWrapper">
+const Snake = ({ snake }) => (
+  <div className="snake-wrapper">
     {snake && snake.map(part => {
+      // console.log(part.y)
       const style = {
         position: 'absolute',
         left: GridUnit * part.x,
@@ -27,7 +37,7 @@ const Snake = ({snake}) => (
         width: GridUnit,
         height: GridUnit,
       };
-      return <div className="snake" style={style}/>;
+      return <div className="snake" style={style} />;
     })}
   </div>
 );
@@ -35,6 +45,7 @@ const Snake = ({snake}) => (
 const Food = ({ food }) => {
   if (food) {
     const { x, y } = food;
+    // console.log(y)
     const style = {
       position: 'absolute',
       background: 'red',
@@ -43,16 +54,26 @@ const Food = ({ food }) => {
       width: GridUnit,
       height: GridUnit,
     };
-    return <div className="food" style={style}/>;
+    return <div className="food" style={style} />;
   }
   return null;
+};
+
+const Result = ({score, length, speed}) => {
+  return (
+    <div className="result">
+      <span>{`Score: ${score}`}</span>
+      <span>{`Length: ${length}`}</span>
+      <span>{`Speed: ${speed}`}</span>
+    </div>
+  )
 }
 
 class GameBoard extends Component {
   constructor(props) {
     super(props);
     this.handleAction = this.handleAction.bind(this);
-    this.gameUpdate = this.gameUpdate.bind(this)
+    this.gameUpdate = this.gameUpdate.bind(this);
     this.snakeGame = new SnakeGame(this.gameUpdate);
     this.state = { ...this.snakeGame.gameInfo };
   }
@@ -75,10 +96,18 @@ class GameBoard extends Component {
 
   render() {
     return (
-      <Board game={this.snakeGame}>
-        <Snake snake={this.state.snake} />
-        <Food food={this.state.food} />
-      </Board>
+      <div>
+        <Nav />
+        <Board game={this.snakeGame}>
+          <Snake snake={this.state.snake} />
+          <Food food={this.state.food} />
+        </Board>
+        <Result
+          score={this.state.score}
+          length={this.state.snake.length}
+          speed={this.state.speed}
+        />
+      </div>
     );
   }
 }

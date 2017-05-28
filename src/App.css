@@ -1,9 +1,5 @@
-.App { }
-
 .container {
-  border: 1px solid black;
   position: relative;
   max-width: 800px;
-  height: 100vh;
   margin: auto;
 }
