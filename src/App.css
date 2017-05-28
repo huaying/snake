@@ -1,6 +1,9 @@
-.App {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
+.App { }
+
+.container {
+  border: 1px solid black;
+  position: relative;
+  max-width: 800px;
+  height: 100vh;
+  margin: auto;
 }

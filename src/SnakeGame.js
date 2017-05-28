@@ -25,24 +25,24 @@ class Snake {
       case Key.UP:
         newPos = {
           x: currentPos.x,
-          y: (currentPos.y - 1 + this.board.height) % this.board.height
+          y: (currentPos.y - 1 + this.board.rows) % this.board.rows
         };
         break;
       case Key.DOWN:
         newPos = {
           x: currentPos.x,
-          y: (currentPos.y + 1) % this.board.height
+          y: (currentPos.y + 1) % this.board.rows
         };
         break;
       case Key.LEFT:
         newPos = {
-          x: (currentPos.x - 1 + this.board.width) % this.board.width,
+          x: (currentPos.x - 1 + this.board.columns) % this.board.columns,
           y: currentPos.y
         };
         break;
       case Key.RIGHT:
         newPos = {
-          x: (currentPos.x + 1) % this.board.width,
+          x: (currentPos.x + 1) % this.board.columns,
           y: currentPos.y
         };
         break;
@@ -61,8 +61,8 @@ class Snake {
 
 const Food = {
   generate: (board) => ({
-      x: Math.floor(board.width * Math.random()),
-      y: Math.floor(board.height * Math.random()),
+      x: Math.floor(board.columns * Math.random()),
+      y: Math.floor(board.rows * Math.random()),
   })
 }
 
@@ -70,6 +70,11 @@ const GameStatus = {
   INIT: 'INIT',
   PLAYING: 'PLAYING',
   END: 'END'
+}
+
+const BoardSize = {
+  columns: 60,
+  rows: 30
 }
 
 class SnakeGame {
@@ -81,10 +86,7 @@ class SnakeGame {
       status: this.gameStatus,
       snake: null
     }
-    this.board = {
-      width: 60,
-      height: 30
-    }
+    this.board = BoardSize;
     this.gameCallback = gameCallback;
     this.running = this.running.bind(this);
   }
