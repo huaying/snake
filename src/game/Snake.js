@@ -1,57 +1,97 @@
 import { Key } from './constants';
 
+export const SnakeStatus = {
+  LIVE: 'Live',
+  DEAD: 'Dead',
+  FOODEATEN: 'FoodEaten',
+};
+
 class Snake {
   constructor(board) {
     this.direction = Key.RIGHT;
     this.board = board;
     this.body = [{ x: 0, y: 0 }];
+    this.moving = false;
+  }
+
+  play() {
+    this.moving = true;
   }
 
   changeDirection(direction) {
-    this.direction = direction;
+    if (Math.abs(direction - this.direction) !== 2) {
+      this.direction = direction;
+    }
   }
 
-  moveAndEat(food) {
-    const currentPos = this.body[0];
-    let isEaten = false;
-    let newPos;
+  command(key) {
+    switch (key) {
+      case Key.UP:
+      case Key.DOWN:
+      case Key.LEFT:
+      case Key.RIGHT:
+        this.changeDirection(key);
+        break;
+      case Key.ESC:
+        this.moving = !this.moving;
+        break;
+      default:
+        break;
+    }
+  }
+
+  getNextPos(currentPos) {
     switch (this.direction) {
       case Key.UP:
-        newPos = {
+        return {
           x: currentPos.x,
           y: (currentPos.y - 1 + this.board.rows) % this.board.rows,
         };
-        break;
       case Key.DOWN:
-        newPos = {
+        return {
           x: currentPos.x,
           y: (currentPos.y + 1) % this.board.rows,
         };
-        break;
       case Key.LEFT:
-        newPos = {
+        return {
           x: (currentPos.x - 1 + this.board.columns) % this.board.columns,
           y: currentPos.y,
         };
-        break;
       case Key.RIGHT:
-        newPos = {
+        return {
           x: (currentPos.x + 1) % this.board.columns,
           y: currentPos.y,
         };
-        break;
       default:
         return null;
     }
-    if (food.x === newPos.x && food.y === newPos.y) {
-      isEaten = true;
-    } else {
+  }
+
+  isFoodEaten(food, newPos) {
+    return (food.x === newPos.x && food.y === newPos.y);
+  }
+
+  checkDead(newPos) {
+    return this.body.some(pos => (newPos.x === pos.x && newPos.y === pos.y));
+  }
+
+  move(food) {
+    if (!this.moving) return SnakeStatus.LIVE;
+
+    const currentPos = this.body[0];
+    const newPos = this.getNextPos(currentPos);
+    if (this.checkDead(newPos)) {
+      return SnakeStatus.DEAD;
+    }
+
+    const isEaten = this.isFoodEaten(food, newPos);
+    if (!isEaten) {
       this.body.pop();
     }
     this.body = [newPos, ...this.body];
-    console.log(this.body, food.x, food.y)
-    return isEaten;
+    return (isEaten) ? SnakeStatus.FOODEATEN : SnakeStatus.LIVE;
   }
+
 }
 
 export default Snake;

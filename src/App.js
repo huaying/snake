@@ -13,22 +13,22 @@ const Nav = () => (
 
 const Footer = () => (
   <div className="footer">
-    Copyright © 2016 Huaying. All Rights Reserved
+    Copyright © 2017 Huaying. All Rights Reserved
   </div>
 );
 
 const GameIntro = () => (
   <div className="game-intro">
     <div>
-      <img src={KeyEsc} />
-      <div>Pause</div>
+      <img src={KeyEsc} alt="KeyEsc" />
+      <div>Pause/Resume</div>
     </div>
     <div>
-      <img src={KeySpace} />
+      <img src={KeySpace} alt="KeySpace" />
       <div>Start</div>
     </div>
     <div>
-      <img src={KeyArrow} />
+      <img src={KeyArrow} alt="KeyArrow" />
       <div>Move</div>
     </div>
   </div>

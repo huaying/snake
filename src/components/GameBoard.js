@@ -53,14 +53,16 @@ const Food = ({ food }) => {
   return null;
 };
 
-const Result = ({score, length, speed}) => {
+const Result = ({ highestScore, lastScore, score, length, speed}) => {
   return (
     <div className="result">
+      <span>{`Hightest Score: ${highestScore}`}</span>
+      <span>{`Last Score: ${lastScore}`}</span>
       <span>{`Score: ${score}`}</span>
       <span>{`Length: ${length}`}</span>
       <span>{`Speed: ${speed}`}</span>
     </div>
-  )
+  );
 }
 
 class GameBoard extends Component {
@@ -97,6 +99,8 @@ class GameBoard extends Component {
           <Food food={this.state.food} />
         </Board>
         <Result
+          highestScore={this.state.highestScore}
+          lastScore={this.state.lastScore}
           score={this.state.score}
           length={this.state.snake.length}
           speed={this.state.speed}
