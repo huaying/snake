@@ -86,9 +86,11 @@ class Snake {
 
     const isEaten = this.isFoodEaten(food, newPos);
     if (!isEaten) {
-      this.body.pop();
+      const partRemove = this.body.pop();
+      this.board.updateSnake(partRemove, false);
     }
     this.body = [newPos, ...this.body];
+    this.board.updateSnake(newPos, true);
     return (isEaten) ? SnakeStatus.FOODEATEN : SnakeStatus.LIVE;
   }
 

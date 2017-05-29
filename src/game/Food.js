@@ -1,8 +1,5 @@
 const Food = {
-  generate: (board) => ({
-    x: Math.floor(board.columns * Math.random()),
-    y: Math.floor(board.rows * Math.random()),
-  }),
+  generate: (board) => board.getValidPos(),
 };
 
 export default Food;

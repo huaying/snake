@@ -1,18 +1,22 @@
-import { GameStatus, BoardSize, Key } from './constants';
+import { GameStatus, Key } from './constants';
+import Board from './Board';
 import Snake, { SnakeStatus } from './Snake';
 import Food from './Food';
 
 class SnakeGame {
   constructor(gameCallback) {
     this.timer = null;
-    this.board = BoardSize;
     this.gameCallback = gameCallback;
     this.running = this.running.bind(this);
     this.gameInit();
   }
 
   gameInit() {
+    if (this.timer) {
+      clearInterval(this.timer);
+    }
     this.gameStatus = GameStatus.INIT;
+    this.board = new Board();
     this.snake = new Snake(this.board);
     this.food = Food.generate(this.board);
     this.speed = 10;
@@ -21,14 +25,13 @@ class SnakeGame {
     this.lastScore = localStorage.getItem('lastscore') || 0;
     this.gameInfo = {
       status: this.gameStatus,
-      snake: [],
+      snake: this.snake.body,
       food: this.food,
       speed: this.speed,
       score: this.score,
       highestScore: this.highestScore,
       lastScore: this.lastScore,
     };
-    this.setSpeed();
   }
 
   gameOver() {
@@ -56,6 +59,7 @@ class SnakeGame {
         if (key !== Key.SPACE) return;
         this.gameStatus = GameStatus.PLAYING;
         this.snake.play();
+        this.setSpeed();
         break;
       case GameStatus.PLAYING:
         this.snake.command(key);
