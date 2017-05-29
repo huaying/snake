@@ -1,15 +1,5 @@
-.nav {
-  padding: 20px 15px;
-  background: #ECECEC;
-}
-
-.nav > .brand {
-  font-size: 24px;
-  font-weight: bold;
-}
-
 .game-board {
-  background: #446CB3;
+  background: #ECECEC;
   border-radius: 5px;
 }
 
@@ -20,5 +10,5 @@
 .result > span {
   margin-right: 20px;
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 500;
 }

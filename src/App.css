@@ -1,5 +1,33 @@
-.container {
+.app {
   position: relative;
   max-width: 800px;
   margin: auto;
+}
+
+.nav {
+  padding: 20px 15px;
+  background: #FEFEFE;
+}
+
+.nav > .brand {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.game-intro {
+  margin: 20px 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.game-intro > div {
+  padding: 10px;
+}
+
+.game-intro img {
+  height: 30px;
+}
+
+.footer {
+  padding: 10px 0;
 }

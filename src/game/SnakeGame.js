@@ -11,7 +11,7 @@ class SnakeGame {
     this.running = this.running.bind(this);
     this.snake = null;
     this.food = null;
-    this.speed = 10;
+    this.speed = 30;
     this.score = 0;
 
     this.gameInfo = {

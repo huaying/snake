@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="188px" height="123px" viewBox="0 0 188 123" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 4</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#FFFFFF" stop-opacity="0.5" offset="0%"></stop>
+            <stop stop-color="#B3ABAB" stop-opacity="0.5" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-2" x="65" y="65" width="50" height="50"></rect>
+        <filter x="-14.0%" y="-10.0%" width="128.0%" height="128.0%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <rect id="path-4" x="0" y="0" width="50" height="50"></rect>
+        <filter x="-14.0%" y="-10.0%" width="128.0%" height="128.0%" filterUnits="objectBoundingBox" id="filter-5">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <rect id="path-6" x="130" y="65" width="50" height="50"></rect>
+        <filter x="-14.0%" y="-10.0%" width="128.0%" height="128.0%" filterUnits="objectBoundingBox" id="filter-7">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <rect id="path-8" x="0" y="0" width="50" height="50"></rect>
+        <filter x="-14.0%" y="-10.0%" width="128.0%" height="128.0%" filterUnits="objectBoundingBox" id="filter-9">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-2" transform="translate(-64.000000, -67.000000)">
+            <g id="Group-4" transform="translate(68.000000, 69.000000)">
+                <g id="Rectangle-5-Copy">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                    <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
+                    <rect x="65" y="65" width="50" height="50"></rect>
+                </g>
+                <text id="Down" font-family="National-Light, National" font-size="14" font-weight="300" fill="#9B9B9B">
+                    <tspan x="75" y="103">Down</tspan>
+                </text>
+                <rect id="Rectangle-Copy" fill="#FEFEFE" x="70" y="70" width="40" height="40"></rect>
+                <g id="Group" transform="translate(66.000000, 0.000000)">
+                    <g id="Rectangle-5">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-5)" xlink:href="#path-4"></use>
+                        <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-4"></use>
+                        <rect x="0" y="0" width="50" height="50"></rect>
+                    </g>
+                    <rect id="Rectangle" fill="#FEFEFE" x="5" y="5" width="40" height="40"></rect>
+                    <text id="Up" font-family="National-Light, National" font-size="14" font-weight="300" fill="#9B9B9B">
+                        <tspan x="25" y="38">Up</tspan>
+                    </text>
+                </g>
+                <text id="Down" font-family="National-Light, National" font-size="14" font-weight="300" fill="#9B9B9B">
+                    <tspan x="75" y="103">Down</tspan>
+                </text>
+                <g id="Rectangle-5-Copy-2">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-7)" xlink:href="#path-6"></use>
+                    <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-6"></use>
+                    <rect x="130" y="65" width="50" height="50"></rect>
+                </g>
+                <rect id="Rectangle-Copy-2" fill="#FEFEFE" x="135" y="70" width="40" height="40"></rect>
+                <text id="Right" font-family="National-Light, National" font-size="14" font-weight="300" fill="#9B9B9B">
+                    <tspan x="141" y="103">Right</tspan>
+                </text>
+                <g id="Group-2" transform="translate(0.000000, 65.000000)">
+                    <g id="Rectangle-5-Copy-3">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-9)" xlink:href="#path-8"></use>
+                        <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-8"></use>
+                        <rect x="0" y="0" width="50" height="50"></rect>
+                    </g>
+                    <rect id="Rectangle-Copy-3" fill="#FEFEFE" x="5" y="5" width="40" height="40"></rect>
+                    <text id="Left" font-family="National-Light, National" font-size="14" font-weight="300" fill="#9B9B9B">
+                        <tspan x="15" y="38">Left</tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

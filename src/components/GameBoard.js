@@ -4,12 +4,6 @@ import SnakeGame from '../game/SnakeGame';
 
 const GridUnit = 10;
 
-const Nav = () => (
-  <div className="nav">
-    <span className="brand">Snake Game</span>
-  </div>
-);
-
 const Board = ({ game, children }) => {
   const { columns, rows } = game.board;
   const style = {
@@ -87,6 +81,7 @@ class GameBoard extends Component {
   }
 
   handleAction(e) {
+    e.preventDefault();
     this.snakeGame.action(e.keyCode);
   }
 
@@ -97,7 +92,6 @@ class GameBoard extends Component {
   render() {
     return (
       <div>
-        <Nav />
         <Board game={this.snakeGame}>
           <Snake snake={this.state.snake} />
           <Food food={this.state.food} />
