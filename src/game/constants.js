@@ -9,11 +9,14 @@ export const Key = {
 
 export const GameStatus = {
   INIT: 'INIT',
+  AI: 'AI',
   PLAYING: 'PLAYING',
   END: 'END',
 };
 
 export const BoardSize = {
-  columns: 80,
-  rows: 40,
+  columns: 20,
+  rows: 10,
 };
+
+export const GridUnit = 40;

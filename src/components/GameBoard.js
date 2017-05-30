@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './GameBoard.css';
 import SnakeGame from '../game/SnakeGame';
-
-const GridUnit = 10;
+import { GridUnit } from '../game/constants';
 
 const Board = ({ game, children }) => {
   const { columns, rows } = game.board;
@@ -52,6 +51,12 @@ const Food = ({ food }) => {
   }
   return null;
 };
+
+const AIMode = ({ game }) => (
+  <div className="ai-mode">
+    <button onClick={() => game.aiPlay()}>AI</button>
+  </div>
+);
 
 const Result = ({ highestScore, lastScore, score, length, speed}) => {
   return (
@@ -105,6 +110,7 @@ class GameBoard extends Component {
           length={this.state.snake.length}
           speed={this.state.speed}
         />
+        <AIMode game={this.snakeGame} />
       </div>
     );
   }

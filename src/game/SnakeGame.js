@@ -2,6 +2,7 @@ import { GameStatus, Key } from './constants';
 import Board from './Board';
 import Snake, { SnakeStatus } from './Snake';
 import Food from './Food';
+import AI from './AI';
 
 class SnakeGame {
   constructor(gameCallback) {
@@ -11,15 +12,22 @@ class SnakeGame {
     this.gameInit();
   }
 
-  gameInit() {
+  cleanUp() {
     if (this.timer) {
       clearInterval(this.timer);
     }
+    if (this.ai && this.ai.timer !== null) {
+      clearTimeout(this.ai.timer);
+    }
+  }
+
+  gameInit() {
+    this.cleanUp();
     this.gameStatus = GameStatus.INIT;
     this.board = new Board();
     this.snake = new Snake(this.board);
     this.food = Food.generate(this.board);
-    this.speed = 10;
+    this.speed = 15;
     this.score = 0;
     this.highestScore = localStorage.getItem('highestscore') || 0;
     this.lastScore = localStorage.getItem('lastscore') || 0;
@@ -67,6 +75,14 @@ class SnakeGame {
       default:
         break;
     }
+  }
+
+  aiPlay() {
+    this.gameInit();
+    this.gameStatus = GameStatus.AI;
+    this.snake.play();
+    this.ai = new AI(this);
+    this.ai.start();
   }
 
   running() {

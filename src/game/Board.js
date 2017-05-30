@@ -1,6 +1,7 @@
 import { BoardSize } from './constants';
+import { make2DArray } from '../helper';
 
-const BoardInfo = {
+export const BoardInfo = {
   EMPTY: 0,
   SNAKE: 1,
   FOOD: 2,
@@ -15,18 +16,17 @@ class Board {
 
   boardInit() {
     this.snake = new Set();
-    this.info = Array(this.rows)
-      .fill(Array(this.columns).fill(BoardInfo.EMPTY));
+    this.info = make2DArray(this.columns, this.rows, BoardInfo.EMPTY);
   }
 
   updateSnake(snakePart, add) {
     const strSnakePart = [snakePart.x, snakePart.y].toString();
     if (add) {
       this.snake.add(strSnakePart);
-      this.info[snakePart.y][snakePart.x] = BoardInfo.SNAKE;
+      this.info[snakePart.x][snakePart.y] = BoardInfo.SNAKE;
     } else {
       this.snake.delete(strSnakePart);
-      this.info[snakePart.y][snakePart.x] = BoardInfo.EMPTY;
+      this.info[snakePart.x][snakePart.y] = BoardInfo.EMPTY;
     }
   }
 
@@ -34,11 +34,11 @@ class Board {
     const range = this.columns * this.rows - this.snake.size;
     const rndIndex = Math.floor(range * Math.random());
     let cur = 0;
-    for (let i = 0; i < this.rows; i++) {
-      for (let j = 0; j < this.columns; j++) {
+    for (let i = 0; i < this.columns; i++) {
+      for (let j = 0; j < this.rows; j++) {
         if (!this.snake.has([i, j].toString())) {
           if (cur === rndIndex) {
-            return { x: j, y: i };
+            return { x: i, y: j };
           }
           cur++;
         }

@@ -21,11 +21,11 @@
 }
 
 .game-intro > div {
-  padding: 10px;
+  padding: 0 10px;
 }
 
 .game-intro img {
-  height: 40px;
+  height: 65px;
 }
 
 .footer {

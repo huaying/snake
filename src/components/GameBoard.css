@@ -5,6 +5,13 @@
 
 .snake {
   background: gray;
+  border-radius: 5px;
+  border: 1px solid #333333;
+}
+
+.food {
+  border-radius: 5px;
+  border: 1px solid #333333;
 }
 
 .result > span {
