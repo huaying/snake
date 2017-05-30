@@ -77,11 +77,11 @@ class SnakeGame {
     }
   }
 
-  aiPlay() {
+  aiPlay(strategy) {
     this.gameInit();
     this.gameStatus = GameStatus.AI;
     this.snake.play();
-    this.ai = new AI(this);
+    this.ai = new AI(this, strategy);
     this.ai.start();
   }
 

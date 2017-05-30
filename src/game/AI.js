@@ -2,13 +2,20 @@ import { Key } from './constants';
 import { BoardInfo } from './Board';
 import { make2DArray } from '../helper';
 
+export const AI_STRATEGY = {
+  BFS: 'BFS',
+  DFS: 'DFS',
+};
+
 class AI {
-  constructor(game) {
+  constructor(game, strategy) {
     this.game = game;
     this.timer = null;
     this.move = this.move.bind(this);
     this.board = this.game.board;
     this.maxPlay = this.board.columns * this.board.rows;
+    this.strategy = strategy;
+    this.findPath = this.getFindPathByStrategy();
   }
 
   start() {
@@ -17,7 +24,7 @@ class AI {
 
   play(maxPlay) {
     if (maxPlay) {
-      const path = this.bfs();
+      const path = this.findPath();
       if (path !== null) this.move(path, () => this.play(maxPlay - 1));
     }
   }
@@ -62,6 +69,17 @@ class AI {
     return result;
   }
 
+  getFindPathByStrategy() {
+    switch (this.strategy) {
+      case AI_STRATEGY.BFS:
+        return this.bfs;
+      case AI_STRATEGY.DFS:
+        return this.dfs;
+      default:
+        return this.bfs;
+    }
+  }
+
   bfs() {
     const getPath = (node, cameFrom) => {
       let cur = node;
@@ -96,7 +114,43 @@ class AI {
         }
       }
     }
+    return null;
+  }
 
+  dfs() {
+    const getPath = (node, cameFrom) => {
+      let cur = node;
+      const path = [node];
+      while (cameFrom[cur.x][cur.y] !== null) {
+        path.unshift(cameFrom[cur.x][cur.y]);
+        cur = cameFrom[cur.x][cur.y];
+      }
+      return path;
+    };
+    const start = this.game.snake.body[0];
+    const end = this.game.food;
+    const board = this.board;
+    const stack = [start];
+    const visit = make2DArray(board.columns, board.rows, false);
+    visit[start.x][start.y] = true;
+    const cameFrom = make2DArray(board.columns, board.rows, null);
+
+    while (stack.length > 0) {
+      const node = stack.pop();
+      const neighbors = this.findEmptySpots(node);
+      for (let i = 0; i < neighbors.length; i++) {
+        const neighbor = neighbors[i];
+        if (neighbor.x === end.x && neighbor.y === end.y) {
+          return [...getPath(node, cameFrom), neighbor];
+        }
+
+        if (!visit[neighbor.x][neighbor.y]) {
+          visit[neighbor.x][neighbor.y] = true;
+          cameFrom[neighbor.x][neighbor.y] = node;
+          stack.push(neighbor);
+        }
+      }
+    }
     return null;
   }
 }

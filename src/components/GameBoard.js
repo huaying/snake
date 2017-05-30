@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './GameBoard.css';
 import SnakeGame from '../game/SnakeGame';
 import { GridUnit } from '../game/constants';
+import { AI_STRATEGY } from '../game/AI';
 
 const Board = ({ game, children }) => {
   const { columns, rows } = game.board;
@@ -54,7 +55,8 @@ const Food = ({ food }) => {
 
 const AIMode = ({ game }) => (
   <div className="ai-mode">
-    <button onClick={() => game.aiPlay()}>AI</button>
+    <button onClick={() => game.aiPlay(AI_STRATEGY.BFS)}>AI:BFS</button>
+    <button onClick={() => game.aiPlay(AI_STRATEGY.DFS)}>AI:DFS</button>
   </div>
 );
 
