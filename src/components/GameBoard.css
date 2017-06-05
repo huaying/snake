@@ -4,9 +4,11 @@
 }
 
 .snake {
+  box-sizing: border-box;
+  padding: 5px;
   background: gray;
   border-radius: 5px;
-  border: 1px solid #333333;
+  border: 5px solid #ECECEC;
 }
 
 .food {

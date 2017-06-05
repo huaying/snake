@@ -7,7 +7,7 @@ export const AI_STRATEGY = {
   DFS: 'DFS',
   SMART: 'SMART',
 };
-const TIME_INTERVAL = 10;
+const TIME_INTERVAL = 15;
 
 class AI {
   constructor(game, strategy) {
