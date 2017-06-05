@@ -72,7 +72,9 @@ class Snake {
   }
 
   checkDead(newPos) {
-    return this.body.some(pos => (newPos.x === pos.x && newPos.y === pos.y));
+    const body = this.body;
+    return body.slice(0, body.length - 1)
+      .some(pos => (newPos.x === pos.x && newPos.y === pos.y));
   }
 
   move(food) {

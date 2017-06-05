@@ -22,7 +22,7 @@ const Board = ({ game, children }) => {
 
 const Snake = ({ snake }) => (
   <div className="snake-wrapper">
-    {snake && snake.map(part => {
+    {snake && snake.map((part, idx) => {
       // console.log(part.y)
       const style = {
         position: 'absolute',
@@ -31,7 +31,9 @@ const Snake = ({ snake }) => (
         width: GridUnit,
         height: GridUnit,
       };
-      return <div className="snake" style={style} />;
+      if (idx === 0) style.backgroundColor = 'green';
+      else if (idx === snake.length - 1) style.backgroundColor = 'blue';
+      return <div key={idx} className="snake" style={style} />;
     })}
   </div>
 );
@@ -57,6 +59,7 @@ const AIMode = ({ game }) => (
   <div className="ai-mode">
     <button onClick={() => game.aiPlay(AI_STRATEGY.BFS)}>AI:BFS</button>
     <button onClick={() => game.aiPlay(AI_STRATEGY.DFS)}>AI:DFS</button>
+    <button onClick={() => game.aiPlay(AI_STRATEGY.SMARTSEARCH)}>AI:Smart</button>
   </div>
 );
 

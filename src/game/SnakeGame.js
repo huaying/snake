@@ -47,7 +47,7 @@ class SnakeGame {
       localStorage.setItem('highestscore', this.score);
     }
     localStorage.setItem('lastscore', this.score);
-    this.gameInit();
+    // this.gameInit();
   }
 
   setSpeed() {
