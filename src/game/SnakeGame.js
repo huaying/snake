@@ -27,7 +27,7 @@ class SnakeGame {
     this.board = new Board();
     this.snake = new Snake(this.board);
     this.food = Food.generate(this.board);
-    this.speed = 15;
+    this.speed = 10;
     this.score = 0;
     this.highestScore = localStorage.getItem('highestscore') || 0;
     this.lastScore = localStorage.getItem('lastscore') || 0;
@@ -47,7 +47,7 @@ class SnakeGame {
       localStorage.setItem('highestscore', this.score);
     }
     localStorage.setItem('lastscore', this.score);
-    // this.gameInit();
+    this.gameInit();
   }
 
   setSpeed() {
@@ -65,6 +65,13 @@ class SnakeGame {
     switch (this.gameStatus) {
       case GameStatus.INIT:
         if (key !== Key.SPACE) return;
+        this.gameStatus = GameStatus.PLAYING;
+        this.snake.play();
+        this.setSpeed();
+        break;
+      case GameStatus.AI:
+        if (key !== Key.SPACE) return;
+        this.gameInit();
         this.gameStatus = GameStatus.PLAYING;
         this.snake.play();
         this.setSpeed();
